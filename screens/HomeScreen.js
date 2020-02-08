@@ -33,6 +33,21 @@ export default class HomeScreen extends Component {
               color="#ccccff"
           />
 
+
+      <Image source =  "assets/images/Logo.png"
+  style={{
+    width: 150,
+    height: 100,
+    position: 'absolute',
+      left: 55,
+      bottom: 200,
+
+  }}
+  
+/>
+
+
+
           
         </View>
       </View>
