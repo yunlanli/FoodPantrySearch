@@ -11,8 +11,19 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import ApiKeys from './constants/ApiKeys';
+import * as firebase from 'firebase';
 
 export default function HomeScreen() {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoadingComplete: false,
+    };
+
+    firebase.initializeApp(ApiKeys.FirebaseConfig);
+  };
   return (
     <View style={styles.container}>
       <ScrollView
