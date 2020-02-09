@@ -2,10 +2,34 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+
+
+import SignUpScreen from './screens/SignUp';
+import SignInScreen from './screens/SignIn';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import MapScreen from './screens/MapScreen';
+import FormScreen from './screens/FormScreen'
+
+
+
+
+const MainNavigator = createStackNavigator({
+  HomeScreen: { screen: HomeScreen },
+  MapScreen: {screen: MapScreen},
+  ProfileScreen: { screen: ProfileScreen },
+  SignIn: { screen: SignInScreen },
+  SignUp: { screen: SignUpScreen },
+  FormScreen: { screen: FormScreen }
+});
+
+const Stuff = createAppContainer(MainNavigator);
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -20,10 +44,9 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
+      <>
+      <Stuff/>
+      </>
     );
   }
 }
