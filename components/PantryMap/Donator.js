@@ -11,14 +11,8 @@
  * addInfo -> Additional info such as allergy
  */
 import React from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
-
+import { View } from 'react-native';
 import { Marker, Callout, CalloutSubview } from 'react-native-maps';
-import { donator } from '../../styles/Donator';
 import Unorderedlist from 'react-native-unordered-list';
 import styled from 'styled-components';
 

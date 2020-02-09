@@ -16,18 +16,49 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MapScreen from './screens/MapScreen';
 import FormScreen from './screens/FormScreen'
+import LoadingScreen from './screens/LoadingScreen';
+
 
 
 
 
 const MainNavigator = createStackNavigator({
+<<<<<<< HEAD
   MapScreen: {screen: MapScreen},
   HomeScreen: { screen: HomeScreen },
   ProfileScreen: { screen: ProfileScreen },
+=======
+  LoadingScreen: { screen: LoadingScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  HomeScreen: { screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  MapScreen: {screen: MapScreen},
+  ProfileScreen: { screen: ProfileScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+>>>>>>> a76228df9f71797e71070757841005d4277fbe60
   SignIn: { screen: SignInScreen },
   SignUp: { screen: SignUpScreen },
-  FormScreen: { screen: FormScreen }
-});
+  FormScreen: { screen: FormScreen,
+    navigationOptions: {
+      header: null,
+    }
+  }
+},
+{
+  initialRouteName: 'LoadingScreen',
+},
+);
+
+
 
 const Stuff = createAppContainer(MainNavigator);
 
@@ -37,9 +68,9 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
+      startAsync={loadResourcesAsync}
+      onError={handleLoadingError}
+      onFinish={() => handleFinishLoading(setLoadingComplete)}
       />
     );
   } else {
