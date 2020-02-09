@@ -17,10 +17,10 @@ export default class ProfileScreen extends Component {
 
 <Image source={require('assets/images/ProfileTitle.png')} 
       style={{
-      width: 120,
-      height: 120,
+      width: 150,
+      height: 150,
       position: 'absolute',
-      left: 10,
+      left: 115,
       bottom: 400,
 
   }}
@@ -29,10 +29,10 @@ export default class ProfileScreen extends Component {
 
   <Image source={require('assets/images/Name.png')} 
       style={{
-      width: 120,
-      height: 120,
+      width: 150,
+      height: 150,
       position: 'absolute',
-      left: 10,
+      left: 20,
       bottom: 300,
 
   }}
@@ -41,11 +41,11 @@ export default class ProfileScreen extends Component {
 
   <Image source={require('assets/images/Rating.png')} 
       style={{
-      width: 120,
-      height: 120,
+      width: 150,
+      height: 150,
       position: 'absolute',
       left: 10,
-      bottom: 200,
+      bottom: 175,
 
   }}
   
@@ -54,11 +54,11 @@ export default class ProfileScreen extends Component {
 
 <Image source={require('assets/images/Servings.png')} 
      style={{
-      width: 120,
-      height: 120,
+      width: 150,
+      height: 150,
       position: 'absolute',
       left: 10,
-      bottom: 100,
+      bottom: 30,
 
   }}
   
