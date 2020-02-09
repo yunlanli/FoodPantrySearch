@@ -14,13 +14,14 @@ import SignUpScreen from './screens/SignUp';
 import SignInScreen from './screens/SignIn';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import MapScreen from './screens/MapScreen'
 
 
 
 const MainNavigator = createStackNavigator({
   HomeScreen: { screen: HomeScreen },
+  MapScreen: {screen: MapScreen},
   ProfileScreen: { screen: ProfileScreen },
-
   SignIn: { screen: SignInScreen },
   SignUp: { screen: SignUpScreen }
 });
