@@ -12,8 +12,34 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-
       <View style={styles.container}>
+
+
+
+  <Image source={require('assets/images/MainTitle.png')}
+      style={{
+      width: 350,
+      height: 350,
+      position: 'absolute',
+      left: 0,
+      bottom: 270,
+
+  }}
+
+/>
+
+
+  <Image source={require('assets/images/LOGO.png')}
+      style={{
+      width: 500,
+      height: 500,
+      position: 'absolute',
+      right: -60,
+      top: 20,
+
+  }}
+
+/>
 
         <View style={styles.buttonContainer1}>
           <Button
@@ -23,6 +49,8 @@ class HomeScreen extends React.Component {
 
           />
         </View>
+
+
         <View style={styles.buttonContainer2}>
           <Button
             onPress={this._onPressButton}
@@ -30,7 +58,10 @@ class HomeScreen extends React.Component {
             color="#000000"
 
           />
+
+
         </View>
+
         <View style={styles.buttonContainer3}>
 
           <Button
@@ -39,34 +70,10 @@ class HomeScreen extends React.Component {
             color="#000000"
 
           />
+</View>
 
+</View>
 
-
-  <Image source={require('../assets/images/MainTitle.png')}
-      style={{
-      width: 350,
-      height: 350,
-      position: 'absolute',
-      left: -8,
-      bottom: 240,
-
-  }}
-
-/>
-
-  <Image source={require('../assets/images/LOGO.png')}
-      style={{
-      width: 450,
-      height: 600,
-      position: 'absolute',
-      left: -40,
-      bottom: -25,
-
-  }}
-
-/>
-        </View>
-      </View>
     );
 
   }
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
   buttonContainer1: {
     margin: 20,
    right: 3,
-    top: 150,
+    top: 300,
     borderRadius:15,
 
 
@@ -101,11 +108,9 @@ const styles = StyleSheet.create({
    buttonContainer3: {
     margin: 20,
     backgroundColor: '#cc66ff',
-    right: 3,
-    top: 150,
+    // right: 3,
+    // top: 75,
     borderRadius:15,
 
   },
 });
-
-export default HomeScreen;
