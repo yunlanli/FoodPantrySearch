@@ -15,21 +15,23 @@ import firebase from 'firebase';
 class SignIn extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
   }
   handleSignIn = () => {
-    const { email, password } = this.state
+    const { email, password, phoneNum} = this.state
     Firebase.auth().signInWithEmailAndPassword(email, password)
     .then(() => {
+
+
       const { navigate } = this.props.navigation;
       navigate('SignUp');
     })
     .catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
 
   }
 
@@ -41,8 +43,8 @@ class SignIn extends React.Component {
     return (
       <View style={styles.container}>
       <Text style = {styles.thanks}>
-        Thank you for taking a step towards ending hunger in America!
-        </Text>
+      Thank you for taking a step towards ending hunger in America!
+      </Text>
       <TextInput
       style={styles.inputBox}
       value={this.state.email}
@@ -56,6 +58,13 @@ class SignIn extends React.Component {
       onChangeText={password => this.setState({ password })}
       placeholder='Password'
       secureTextEntry={true}
+      />
+      <TextInput
+      style={styles.inputBox}
+      value={this.state.email}
+      onChangeText={phoneNum => this.setState({ phoneNum })}
+      placeholder='Phone Number'
+      autoCapitalize='none'
       />
       <TouchableOpacity style={styles.button} onPress={this.handleSignIn}>
       <Text style={styles.buttonText}>Sign In</Text>
@@ -78,7 +87,9 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontSize:20,
     marginBottom: 30,
+    marginTop:-50,
     width:'85%'
+
   },
   container: {
     flex: 1,

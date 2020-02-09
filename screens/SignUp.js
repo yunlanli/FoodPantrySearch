@@ -11,22 +11,36 @@ import { MonoText } from '../components/StyledText';
 import Firebase from '../constants/ApiKeys';
 import firebase from 'firebase';
 var provider = new firebase.auth.GoogleAuthProvider();
+require("firebase/firestore");
+var db = firebase.firestore();
 
-
-class HomeScreen extends React.Component {
+class SignUp extends React.Component {
   state = {
     name: '',
     email: '',
+    phoneNum: '',
     password: ''
   }
 
   handleSignUp = () => {
-    const { email, password } = this.state
+    const { name, email, phoneNum, password } = this.state
     Firebase.auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      const { navigate } = this.props.navigation;
-      navigate("Links");
+      db.collection("Donators").doc(Firebase.auth().currentUser.uid).set({
+        Id: firebase.auth().currentUser.uid,
+        Name: name,
+        Email: email,
+        phoneNum: phoneNum
+      })
+      .then(() => {
+        const { navigate } = this.props.navigation;
+        navigate("Links");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+
     })
     .catch(error => console.log(error))
   }
@@ -39,8 +53,8 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <Text style = {styles.thanks}>
-        Thank you for taking a step towards ending hunger in America!
-        </Text>
+      Thank you for taking a step towards ending hunger in America!
+      </Text>
       <TextInput
       style={styles.inputBox}
       value={this.state.name}
@@ -52,6 +66,13 @@ class HomeScreen extends React.Component {
       value={this.state.email}
       onChangeText={email => this.setState({ email })}
       placeholder='Email'
+      autoCapitalize='none'
+      />
+      <TextInput
+      style={styles.inputBox}
+      value={this.state.phoneNum}
+      onChangeText={phoneNum => this.setState({ phoneNum })}
+      placeholder='Phone Number'
       autoCapitalize='none'
       />
       <TextInput
@@ -69,7 +90,7 @@ class HomeScreen extends React.Component {
         const { navigate } = this.props.navigation;
         navigate('SignIn');
       }}
-        title = "Already have an account? Sign in here."
+      title = "Already have an account? Sign in here."
       />
 
       </View>
@@ -124,7 +145,7 @@ const styles = StyleSheet.create({
   }
 })
 
-HomeScreen.navigationOptions = {
+SignUp.navigationOptions = {
   title: 'SignUp',
 };
 
