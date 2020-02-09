@@ -1,5 +1,5 @@
 import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';https://miro.medium.com/max/7803/1*y0y6K0RzkZMtyjTQtimF4w.png
+import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
