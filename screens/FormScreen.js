@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Button,ScrollView, SafeAreaView, StatusBar } from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -9,21 +9,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
-  },
-  buttonText: {
-      fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-  button: {
-    height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
   }
 });
 
@@ -50,21 +35,29 @@ export default class App extends Component {
     }
 
   render() {
-      return (
-      <View style={styles.container}>
-        <Form
-          ref={c => this._form = c}
-          type={Listing}
-          options={options}
-        />
-        <Button
-          title="Submit!"
-          onPress={this.handleSubmit}
-        />
-      </View>
+  	return (
+      	<SafeAreaView style={styles.container}>
+	      <ScrollView
+	      	style={styles.scrollView}
+	      	contentInset={{top:-75}}
+	      	automaticallyAdjustContentInsets={false}
+	      >
+		      <View style={styles.container}>
+		        <Form
+		          ref={c => this._form = c}
+		          type={Listing}
+		          options={options}
+		        />
+		        <Button
+		          title="Submit!"
+		          onPress={this.handleSubmit}
+		        />
+		      </View>
+	      </ScrollView>
+  		</SafeAreaView>
     );
   }
-});
+}
 
 var options = {
   fields: {
@@ -73,24 +66,20 @@ var options = {
       placeholder: 'Your name or restaurant name'
     },
     street: {
-      label: 'Address of pickup location',
-      placeholder: 'Street'
+      label: 'Address of pickup location\nStreet',
     },
       city: {
-        placeholder: 'City'
       },
     state: {
-      placeholder: 'State'
     },
     zipcode: {
-      placeholder: 'Zipcode'
     },
     items: {
-      label: 'Items Available'
+      label: 'Items Available',
       placeholder: 'List items separated by commas'
     },
     servings: {
-      label = 'Number of servings'
+      label: 'Number of servings'
     },
     perishable: {
       label: 'Perishable'
@@ -98,10 +87,10 @@ var options = {
     addinfo: {
       label: 'Additional Information',
       placeholder: 'Enter allergy info, food description, or any other additional information'
-    }
+    },
     starttime: {
       label: 'Timeframe available - start and end time'
-    }
+    },
     endtime: {
     }
   }
