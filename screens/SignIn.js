@@ -123,8 +123,4 @@ const styles = StyleSheet.create({
   }
 })
 
-SignIn.navigationOptions = {
-  title: 'SignIn',
-};
-
 export default SignIn

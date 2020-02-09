@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Button,ScrollView, SafeAreaView, StatusBar } from 'react-native';
 
 import t from 'tcomb-form-native';
-
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyA0AVOVOJPhuNLq0N3AqGkVwkzQA07SEi8");
+Geocode.setLanguage("en");
+Geocode.enableDebug();
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -35,62 +38,73 @@ var db = firebase.firestore();
 
 class FormScreen extends React.Component {
   handleSubmit = () => {
-      const value = this._form.getValue(); // use that ref to get the form value
-      console.log('value: ', value);
-      var id = firebase.auth().currentUser.uid;
-      var user = db.collection("Donators").doc(id);
-      var fullAddress = value.street + ", " + value.city + ", " + value.state + ", " + value.zipcode;
-      var items = value.items.replace(/\s/g, '').split(',');
-      user.get().then((doc) => {
-        var data = doc.data();
-        db.collection("Donations").doc(id).set({
-          id: id,
-          name: data.name,
-          email: data.email,
-          phoneNum: data.phoneNum,
-          addinfo: value.addinfo,
-          address: fullAddress,
-          items: items,
-          startTime: value.starttime,
-          endTime: value.endtime,
-          servings: value.servings,
-          addInfo: value.addinfo
-        })
-        .then(() => {
-          const { navigate } = this.props.navigation;
-          navigate("ProfileScreen");
-        })
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-        });
-      }).catch(function(error) {
-        console.log("Error getting document:", error);
+    const value = this._form.getValue(); // use that ref to get the form value
+    var id = firebase.auth().currentUser.uid;
+    var user = db.collection("Donators").doc(id);
+    var fullAddress = value.street + ", " + value.city + ", " + value.state + ", " + value.zipcode;
+    var long, lata;
+    Geocode.fromAddress(fullAddress).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        lata = lat;
+        long = lng;
+      },
+      error => {
+        console.error(error);
+      }
+    );
+    var items = value.items.replace(/\s/g, '').split(',');
+    user.get().then((doc) => {
+      var data = doc.data();
+      db.collection("Donations").add({
+        id: id,
+        name: data.name,
+        email: data.email,
+        phoneNum: data.phoneNum,
+        addinfo: value.addinfo,
+        address: fullAddress,
+        items: items,
+        startTime: value.starttime,
+        endTime: value.endtime,
+        servings: value.servings,
+        lat: lata,
+        long: long
+      })
+      .then(() => {
+        const { navigate } = this.props.navigation;
+        navigate("ProfileScreen");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
       });
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
 
 
-    }
+  }
 
   render() {
-  	return (
-      	<SafeAreaView style={styles.container}>
-	      <ScrollView
-	      	style={styles.scrollView}
-	      	contentInset={{top:-75}}
-	      	automaticallyAdjustContentInsets={false}
-	      >
-		      <View style={styles.container}>
-		        <Form
-		          ref={c => this._form = c}
-		          type={Listing}
-		          options={options}
-		        />
-		        <Button
-		          title="Submit!"
-		          onPress={this.handleSubmit}
-		        />
-		      </View>
-	      </ScrollView>
-  		</SafeAreaView>
+    return (
+      <SafeAreaView style={styles.container}>
+      <ScrollView
+      style={styles.scrollView}
+      contentInset={{top:-75}}
+      automaticallyAdjustContentInsets={false}
+      >
+      <View style={styles.container}>
+      <Form
+      ref={c => this._form = c}
+      type={Listing}
+      options={options}
+      />
+      <Button
+      title="Submit!"
+      onPress={this.handleSubmit}
+      />
+      </View>
+      </ScrollView>
+      </SafeAreaView>
     );
   }
 }
@@ -104,8 +118,8 @@ var options = {
     street: {
       label: 'Address of pickup location\nStreet',
     },
-      city: {
-      },
+    city: {
+    },
     state: {
     },
     zipcode: {
