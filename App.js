@@ -21,8 +21,8 @@ import FormScreen from './screens/FormScreen'
 
 
 const MainNavigator = createStackNavigator({
-  HomeScreen: { screen: HomeScreen },
   MapScreen: {screen: MapScreen},
+  HomeScreen: { screen: HomeScreen },
   ProfileScreen: { screen: ProfileScreen },
   SignIn: { screen: SignInScreen },
   SignUp: { screen: SignUpScreen },

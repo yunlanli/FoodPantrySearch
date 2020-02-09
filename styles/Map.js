@@ -9,7 +9,7 @@ export const userMap = StyleSheet.create({
 
     mapContainer: {
         width: '100%',
-        height: '70%',
+        height: '85%',
     },
 
 })

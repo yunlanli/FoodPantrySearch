@@ -31,35 +31,38 @@ function itemGenerator(list) {
     return itemComponent;
 }
 
-const Donator = props => (
-    <Marker coordinate={props.location}>
+const Donator = props => { 
+    const donatorMarker = (
+        <Marker coordinate={props.location}>
 
-        <Callout>
-            <View style={donator.Description}>
-                <Text style={donator.Name}>{props.donator}</Text>
-                
-                <CalloutSubview>
-                    <ScrollView>
-                        <Text>Available items:</Text>
-                        <ScrollView style={donator.Items}>
-                            {itemGenerator(props.items)}
+            <Callout>
+                <View style={donator.Description}>
+                    <Text style={donator.Name}>{props.donator}</Text>
+                    
+                    <CalloutSubview>
+                        <ScrollView>
+                            <Text>Available items:</Text>
+                            <ScrollView style={donator.Items}>
+                                {itemGenerator(props.items)}
+                            </ScrollView>
                         </ScrollView>
-                    </ScrollView>
-                </CalloutSubview>
-                
-                <View>
-                    <Text>Pick-Up:</Text>
-                    <Text>{props.address}</Text>
+                    </CalloutSubview>
+                    
+                    <View>
+                        <Text>Pick-Up:</Text>
+                        <Text>{props.address}</Text>
 
-                    <Text>Phone: {props.phone}</Text>
-                    <Text>Additional Info: {props.addInfo}</Text>
+                        <Text>Phone: {props.phone}</Text>
+                        <Text>Additional Info: {props.addInfo}</Text>
+                    </View>
+
                 </View>
+            </Callout>
 
-            </View>
-        </Callout>
+        </Marker>
+    );
 
-    </Marker>
-    
-)
+    return donatorMarker;
+}
 
 export default Donator;

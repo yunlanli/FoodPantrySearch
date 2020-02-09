@@ -24,32 +24,36 @@ function handleReserve(urL){
     // Linking.openURL(urL);
 }
 
-const Pantry = props => (
-    <Marker 
-        coordinate={props.location}
-        pinColor='orange'>
+const Pantry = props => {
+    const pantryMarker = (
+        <Marker 
+            coordinate={props.location}
+            pinColor='orange'>
 
-        <Callout>
-            <View style={pantry.description}>
-                <Text style={pantry.name}>{props.name}</Text>
-                
-                <Text style={pantry.waitTime}>
-                    Wait time: {props.waitTime} 
-                </Text>
+            <Callout>
+                <View style={pantry.description}>
+                    <Text style={pantry.name}>{props.name}</Text>
+                    
+                    <Text style={pantry.waitTime}>
+                        Wait time: {props.waitTime} 
+                    </Text>
 
-                <View>
-                    <Text style={pantry.address}>Address:</Text>
-                    <Text>{props.address}</Text>
+                    <View>
+                        <Text style={pantry.address}>Address:</Text>
+                        <Text>{props.address}</Text>
+                    </View>
+                    
+                    <CalloutSubview onPress={handleReserve(props.urL)}>
+                        <Text style={pantry.reserve}> Reserve Here </Text>
+                    </CalloutSubview>
                 </View>
-                
-                <CalloutSubview onPress={handleReserve(props.urL)}>
-                    <Text style={pantry.reserve}> Reserve Here </Text>
-                </CalloutSubview>
-            </View>
-        </Callout>
+            </Callout>
 
-    </Marker>
-    
-)
+        </Marker>
+    );
+
+    return pantryMarker;
+
+}
 
 export default Pantry;

@@ -13,11 +13,12 @@ import { userMap } from '../../styles/Map';
 import Pantry from './Pantry';
 import Donator from './Donator';
 
-function donatorGenerator(donatorList){
+function donatorGenerator(donatorList, show){
     const donatorMarker = donatorList.map(donator => {
         return(
             <Donator
                 key={donator.name}
+                show={show}
                 location={donator.coordinate}
                 address={donator.address}
                 donator={donator.name}
@@ -28,14 +29,15 @@ function donatorGenerator(donatorList){
         );
     })
 
-    return donatorMarker;
+    return show && donatorMarker;
 }
 
-function pantryGenerator(pantryList){
+function pantryGenerator(pantryList, show){
     const pantryMarker = pantryList.map(pantry => {
         return(
             <Pantry
                 key={pantry.name}
+                show={show}
                 location={pantry.coordinate}
                 name={pantry.name}
                 address={pantry.address}
@@ -45,7 +47,7 @@ function pantryGenerator(pantryList){
         );
     })
 
-    return pantryMarker;
+    return show && pantryMarker;
 }
 
 const NY = {
@@ -57,14 +59,14 @@ const NY = {
 
 const Map = props => {
     return(
-        <MapView 
+        <MapView
             style={userMap.mapContainer}
             initialRegion={NY}
             showsUserLocation={true}
             followsUserLocation={false}
             userLocationAnnotationTitle="You are here!">
-            {donatorGenerator(props.donatorList)}
-            {pantryGenerator(props.pantryList)}
+            {donatorGenerator(props.donatorList, props.showDonator)}
+            {pantryGenerator(props.pantryList, props.showPantry)}
         </MapView>
     )
 }

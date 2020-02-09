@@ -10,6 +10,7 @@ export const theme = {
   navy: "#4D72A7",
   cyan: "#5DA9DB",
   lightBlue: "#60B3FB",
+  lightPink: "#ffb6c1",
   darkGrey: "#757575",
   lightGrey: "#E5E5E5",
   charcoal: "#4D4D4D",
