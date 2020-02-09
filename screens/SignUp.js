@@ -35,7 +35,7 @@ class SignUp extends React.Component {
       })
       .then(() => {
         const { navigate } = this.props.navigation;
-        navigate("Links");
+        navigate("FormScreen");
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);

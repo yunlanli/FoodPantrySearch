@@ -21,10 +21,8 @@ class SignIn extends React.Component {
     const { email, password, phoneNum} = this.state
     Firebase.auth().signInWithEmailAndPassword(email, password)
     .then(() => {
-
-
       const { navigate } = this.props.navigation;
-      navigate('SignUp');
+      navigate('FormScreen');
     })
     .catch(function(error) {
       // Handle Errors here.
@@ -61,7 +59,7 @@ class SignIn extends React.Component {
       />
       <TextInput
       style={styles.inputBox}
-      value={this.state.email}
+      value={this.state.phoneNum}
       onChangeText={phoneNum => this.setState({ phoneNum })}
       placeholder='Phone Number'
       autoCapitalize='none'

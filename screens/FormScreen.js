@@ -28,7 +28,7 @@ const Listing = t.struct({
   endtime: t.Date
 });
 
-export default class App extends Component {
+class FormScreen extends React.Component {
   handleSubmit = () => {
       const value = this._form.getValue(); // use that ref to get the form value
       console.log('value: ', value);
@@ -95,3 +95,5 @@ var options = {
     }
   }
 };
+
+export default FormScreen;

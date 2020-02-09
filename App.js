@@ -14,7 +14,9 @@ import SignUpScreen from './screens/SignUp';
 import SignInScreen from './screens/SignIn';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import MapScreen from './screens/MapScreen'
+import MapScreen from './screens/MapScreen';
+import FormScreen from './screens/FormScreen'
+
 
 
 
@@ -23,8 +25,10 @@ const MainNavigator = createStackNavigator({
   MapScreen: {screen: MapScreen},
   ProfileScreen: { screen: ProfileScreen },
   SignIn: { screen: SignInScreen },
-  SignUp: { screen: SignUpScreen }
+  SignUp: { screen: SignUpScreen },
+  FormScreen: { screen: FormScreen }
 });
+
 const Stuff = createAppContainer(MainNavigator);
 
 export default function App(props) {
