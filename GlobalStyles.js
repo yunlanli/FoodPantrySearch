@@ -31,7 +31,7 @@ export const homeStyle = StyleSheet.create({
 
     pantryMap: {
         width: '100%',
-        height: '40%',
+        height: '70%',
     },
 
     container: {
