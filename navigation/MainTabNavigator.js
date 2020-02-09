@@ -6,9 +6,22 @@ import { createAppContainer } from 'react-navigation';
 
 
 import TabBarIcon from '../components/TabBarIcon';
+<<<<<<< HEAD
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+=======
+<<<<<<< HEAD
+import HomeScreen from '../screens/HomeScreen';
+import MapScreen from '../screens/MapScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+=======
+import HomeScreen from '../screens/SignUp';
+import LinksScreen from '../screens/LinksScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import SignInScreen from '../screens/SignIn'
+>>>>>>> 159541dde310b01faf2e6c19cb38b44f6f0262a0
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -45,14 +58,45 @@ const MapsStack = createStackNavigator(
   config
 );
 
+<<<<<<< HEAD
 MapsStack.navigationOptions = {
   tabBarLabel: 'Maps',
+=======
+<<<<<<< HEAD
+MapsStack.navigationOptions = {
+  tabBarLabel: 'Maps',
+=======
+const SignInStack = createStackNavigator(
+  {
+    SignIn: SignInScreen,
+  },
+  config
+);
+
+const MainNavigator = createStackNavigator({
+  SignIn: { screen: SignInScreen },
+  SignUp: { screen: HomeScreen }
+});
+
+LinksStack.navigationOptions = {
+  tabBarLabel: 'Links',
+>>>>>>> 159541dde310b01faf2e6c19cb38b44f6f0262a0
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
 
+<<<<<<< HEAD
 MapsStack.path = '';
+=======
+<<<<<<< HEAD
+MapsStack.path = '';
+=======
+
+LinksStack.path = '';
+>>>>>>> 159541dde310b01faf2e6c19cb38b44f6f0262a0
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
 
 const ProfileStack = createStackNavigator(
   {

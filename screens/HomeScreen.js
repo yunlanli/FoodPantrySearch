@@ -28,6 +28,46 @@ class HomeScreen extends React.Component {
 
 
       <Image source={require('../assets/images/LOGO.png')}
+
+  }}
+
+/>
+
+        <View style={styles.buttonContainer1}>
+          <Button
+            onPress={this._onPressButton}
+            title = "Donate"
+            color = "#000000"
+
+          />
+        </View>
+
+
+        <View style={styles.buttonContainer2}>
+          <Button
+            onPress={this._onPressButton}
+            title="Search"
+            color="#000000"
+
+          />
+
+
+        </View>
+
+        <View style={styles.buttonContainer3}>
+
+          <Button
+            onPress={this._onPressButton}
+            title="Sign Up"
+            color="#000000"
+
+          />
+</View>
+
+
+
+  <Image source={require('assets/images/MainTitle.png')}
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
       style={{
         width: 500,
         height: 500,
@@ -48,6 +88,7 @@ class HomeScreen extends React.Component {
       title = "Need a Account? Sign up here."
       />
       </View>
+<<<<<<< HEAD
 
       <View style={styles.buttonContainer2}>
       <Button
@@ -78,6 +119,7 @@ class HomeScreen extends React.Component {
 
       </View>
 
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
     );
 
   }
@@ -98,6 +140,7 @@ const styles = StyleSheet.create({
     color:'black',
     right: 3,
     top: 300,
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
     borderRadius:15,
 
 
@@ -117,6 +160,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#cc66ff',
     // right: 3,
     // top: 75,
+>>>>>>> 074f82f5cbabd52cd508bc56946ed8b6ec6197ab
     borderRadius:15,
 
   },
