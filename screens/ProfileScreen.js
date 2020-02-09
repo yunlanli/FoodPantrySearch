@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { Image } from 'react-native';
 import { Text } from 'react-native';
-
+import toList from '../scripts/DatabaseToList';
 import Firebase from '../constants/ApiKeys';
 import firebase from 'firebase';
 require("firebase/firestore");
@@ -27,7 +27,6 @@ componentDidMount() {
           email: data.email,
           phoneNum: data.phoneNum
         },() => {
-          console.log("hi");
         })
       }).catch(function(error) {
         console.log("Error getting document:", error);
