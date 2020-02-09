@@ -28,9 +28,9 @@ class SignUp extends React.Component {
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
       db.collection("Donators").doc(Firebase.auth().currentUser.uid).set({
-        Id: firebase.auth().currentUser.uid,
-        Name: name,
-        Email: email,
+        id: firebase.auth().currentUser.uid,
+        name: name,
+        email: email,
         phoneNum: phoneNum
       })
       .then(() => {
@@ -149,4 +149,4 @@ SignUp.navigationOptions = {
   title: 'SignUp',
 };
 
-export default HomeScreen
+export default SignUp

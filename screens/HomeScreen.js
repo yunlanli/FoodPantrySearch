@@ -5,26 +5,20 @@ import { Text } from 'react-native';
 
 
 
-export default class HomeScreen extends Component {
-  _onPressButton() {
-    alert('You tapped the button!')
+class HomeScreen extends React.Component {
+  _onPressButton = (e) => {
+   console.log('You tapped the button!');
   }
 
   render() {
     return (
       <View style={styles.container}>
 
-
-
-
-
-
-
         <View style={styles.buttonContainer1}>
           <Button
             onPress={this._onPressButton}
             title = "Donate"
-            color = "#ffffff"
+            color = "#000000"
 
           />
         </View>
@@ -32,7 +26,7 @@ export default class HomeScreen extends Component {
           <Button
             onPress={this._onPressButton}
             title="Search"
-            color="#ffffff"
+            color="#000000"
 
           />
         </View>
@@ -41,17 +35,18 @@ export default class HomeScreen extends Component {
           <Button
             onPress={this._onPressButton}
             title="Sign Up"
-            color="#ffffff"
+            color="#000000"
+
           />
 
 
 
   <Image source={require('../assets/images/MainTitle.png')}
       style={{
-      width: 400,
-      height: 400,
+      width: 350,
+      height: 350,
       position: 'absolute',
-      left: -40,
+      left: -8,
       bottom: 240,
 
   }}
@@ -87,23 +82,29 @@ const styles = StyleSheet.create({
 
   buttonContainer1: {
     margin: 20,
-    backgroundColor: '#66ccff',
    right: 3,
-    top: 150
+    top: 150,
+    borderRadius:15,
+
+
   },
 
  buttonContainer2: {
     margin: 20,
-    backgroundColor: '#ccff99',
+    backgroundColor: '#66ff99',
    right: 3,
-    top: 150
+    top: 150,
+      borderRadius:15,
   },
 
    buttonContainer3: {
     margin: 20,
-    backgroundColor: '#ccccff',
+    backgroundColor: '#cc66ff',
     right: 3,
-    top: 150
+    top: 150,
+    borderRadius:15,
 
   },
 });
+
+export default HomeScreen;

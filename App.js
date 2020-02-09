@@ -12,13 +12,16 @@ import { createAppContainer } from 'react-navigation';
 
 import SignUpScreen from './screens/SignUp';
 import SignInScreen from './screens/SignIn';
-import TitleScreen from './screens/HomeScreen';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
 
 
 const MainNavigator = createStackNavigator({
+  ProfileScreen: { screen: ProfileScreen },
+  HomeScreen: { screen: HomeScreen },
   SignIn: { screen: SignInScreen },
-  SignUp: { screen: SignUpScreen },
-  TitleScreen: {screen:TitleScreen }
+  SignUp: { screen: SignUpScreen }
 });
 const Stuff = createAppContainer(MainNavigator);
 
@@ -35,7 +38,9 @@ export default function App(props) {
     );
   } else {
     return (
+      <>
       <Stuff/>
+      </>
     );
   }
 }
