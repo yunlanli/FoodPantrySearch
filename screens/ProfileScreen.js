@@ -15,29 +15,50 @@ export default class ProfileScreen extends Component {
       <View style={styles.container}>
 
 
-
-
-
-
-          />
-        </View>
-        <View style={styles.buttonContainer3}>
-
-          <Button
-            onPress={this._onPressButton}
-            title="Sign Up"
-            color="#ffffff"
-          />
-
-
-
-  <Image source={require('assets/images/MainTitle.png')}
+<Image source={require('assets/images/ProfileTitle.png')}
       style={{
-      width: 400,
-      height: 400,
+      width: 120,
+      height: 120,
       position: 'absolute',
-      left: -40,
-      bottom: 240,
+      left: 10,
+      bottom: 400,
+
+  }}
+
+/>
+
+  <Image source={require('assets/images/Name.png')}
+      style={{
+      width: 120,
+      height: 120,
+      position: 'absolute',
+      left: 10,
+      bottom: 300,
+
+  }}
+
+/>
+
+  <Image source={require('assets/images/Rating.png')}
+      style={{
+      width: 120,
+      height: 120,
+      position: 'absolute',
+      left: 10,
+      bottom: 200,
+
+  }}
+
+/>
+
+
+<Image source={require('assets/images/Servings.png')}
+     style={{
+      width: 120,
+      height: 120,
+      position: 'absolute',
+      left: 10,
+      bottom: 100,
 
   }}
 
@@ -45,11 +66,12 @@ export default class ProfileScreen extends Component {
 
 
         </View>
-      </View>
+
     );
 
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -58,11 +80,5 @@ const styles = StyleSheet.create({
 
   },
 
-  buttonContainer1: {
-    margin: 20,
-    backgroundColor: '#66ccff',
-   right: 3,
-    top: 150
-  },
 
 });
