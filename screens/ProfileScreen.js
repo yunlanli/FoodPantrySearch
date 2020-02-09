@@ -14,30 +14,15 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
 
+       
+      
+   
 
-
-
-
-
-
-        <View style={styles.buttonContainer1}>
-          <Button
-            onPress={this._onPressButton}
-            title = "Donate"
-            color = "#ffffff"
-
-          />
-        </View>
-        <View style={styles.buttonContainer2}>
-          <Button
-            onPress={this._onPressButton}
-            title="Search"
-            color="#ffffff"
-
+    
           />
         </View>
         <View style={styles.buttonContainer3}>
-
+         
           <Button
             onPress={this._onPressButton}
             title="Sign Up"
@@ -46,7 +31,7 @@ export default class HomeScreen extends Component {
 
 
 
-  <Image source={require('assets/images/MainTitle.png')}
+  <Image source={require('assets/images/MainTitle.png')} 
       style={{
       width: 400,
       height: 400,
@@ -58,24 +43,13 @@ export default class HomeScreen extends Component {
 
 />
 
-  <Image source={require('assets/images/LOGO.png')}
-      style={{
-      width: 450,
-      height: 600,
-      position: 'absolute',
-      left: -40,
-      bottom: -25,
 
-  }}
-
-/>
         </View>
       </View>
     );
-
+    
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -84,7 +58,6 @@ const styles = StyleSheet.create({
 
   },
 
-
   buttonContainer1: {
     margin: 20,
     backgroundColor: '#66ccff',
@@ -92,18 +65,5 @@ const styles = StyleSheet.create({
     top: 150
   },
 
- buttonContainer2: {
-    margin: 20,
-    backgroundColor: '#ccff99',
-   right: 3,
-    top: 150
-  },
-
-   buttonContainer3: {
-    margin: 20,
-    backgroundColor: '#ccccff',
-    right: 3,
-    top: 150
-
-  },
 });
+

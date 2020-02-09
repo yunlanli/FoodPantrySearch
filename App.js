@@ -12,7 +12,7 @@ import { createAppContainer } from 'react-navigation';
 
 import SignUpScreen from './screens/SignUp';
 import SignInScreen from './screens/SignIn';
-import TitleScreen from './screens/TitleScreen';
+import TitleScreen from './screens/HomeScreen';
 
 
 const MainNavigator = createStackNavigator({
