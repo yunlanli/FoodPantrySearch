@@ -32,7 +32,7 @@ export default class HomeScreen extends Component {
          
           <Button
             onPress={this._onPressButton}
-            title="Create Account"
+            title="Sign Up"
               color="#ffffff"
           />
 
