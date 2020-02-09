@@ -12,29 +12,32 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer1}>
           <Button
             onPress={this._onPressButton}
             title="Donate"
-            color = "#66ccff"
+            color = "#ffffff"
+
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer2}>
           <Button
             onPress={this._onPressButton}
             title="Search"
-            color="#ccff99"
+           color="#ffffff"
+           
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer3}>
+         
           <Button
             onPress={this._onPressButton}
             title="Create Account"
-              color="#ccccff"
+              color="#ffffff"
           />
 
 
-      <Image source =  "assets/images/Logo.png"
+      <Image source =  "Project/assets/images/Logo.png"
   style={{
     width: 150,
     height: 100,
@@ -61,10 +64,27 @@ const styles = StyleSheet.create({
   container: {
    flex: 1,
    justifyContent: 'center',
-  },
-  buttonContainer: {
-    margin: 20
+  
+
+   
   },
 
+  buttonContainer1: {
+    margin: 20,
+    backgroundColor: '#66ccff'
+  
+  },
+
+ buttonContainer2: {
+    margin: 20,
+    backgroundColor: '#ccff99'
+  
+  },
+
+   buttonContainer3: {
+    margin: 20,
+    backgroundColor: '#ccccff'
+  
+  },
 });
 
