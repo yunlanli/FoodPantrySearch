@@ -37,7 +37,7 @@ export default class HomeScreen extends Component {
           />
 
 
-      <Image source =  "Project/assets/images/Logo.png"
+      <Image source =  "https://github.com/yunlanli/FoodPantrySearch/blob/master/assets/images/LOGO.png"
   style={{
     width: 150,
     height: 100,
@@ -71,19 +71,23 @@ const styles = StyleSheet.create({
 
   buttonContainer1: {
     margin: 20,
-    backgroundColor: '#66ccff'
-  
+    backgroundColor: '#66ccff',
+   right: 3,
+    top: 100
   },
 
  buttonContainer2: {
     margin: 20,
-    backgroundColor: '#ccff99'
-  
+    backgroundColor: '#ccff99',
+   right: 3,
+    top: 100
   },
 
    buttonContainer3: {
     margin: 20,
-    backgroundColor: '#ccccff'
+    backgroundColor: '#ccccff',
+    right: 3,
+    top: 100
   
   },
 });
