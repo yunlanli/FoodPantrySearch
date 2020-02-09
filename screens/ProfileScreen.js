@@ -5,7 +5,7 @@ import { Text } from 'react-native';
 
 
 
-export default class HomeScreen extends Component {
+export default class ProfileScreen extends Component {
   _onPressButton() {
     alert('You tapped the button!')
   }
@@ -14,15 +14,15 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
 
-       
-      
-   
 
-    
+
+
+
+
           />
         </View>
         <View style={styles.buttonContainer3}>
-         
+
           <Button
             onPress={this._onPressButton}
             title="Sign Up"
@@ -31,7 +31,7 @@ export default class HomeScreen extends Component {
 
 
 
-  <Image source={require('assets/images/MainTitle.png')} 
+  <Image source={require('assets/images/MainTitle.png')}
       style={{
       width: 400,
       height: 400,
@@ -47,7 +47,7 @@ export default class HomeScreen extends Component {
         </View>
       </View>
     );
-    
+
   }
 }
 
@@ -66,4 +66,3 @@ const styles = StyleSheet.create({
   },
 
 });
-

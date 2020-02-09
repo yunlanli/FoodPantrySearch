@@ -46,7 +46,7 @@ export default class HomeScreen extends Component {
 
 
 
-  <Image source={require('assets/images/MainTitle.png')}
+  <Image source={require('../assets/images/MainTitle.png')}
       style={{
       width: 400,
       height: 400,
@@ -58,7 +58,7 @@ export default class HomeScreen extends Component {
 
 />
 
-  <Image source={require('assets/images/LOGO.png')}
+  <Image source={require('../assets/images/LOGO.png')}
       style={{
       width: 450,
       height: 600,
