@@ -41,7 +41,7 @@ class SignIn extends React.Component {
     return (
       <View style={styles.container}>
       <Text style = {styles.thanks}>
-      Thank you for taking a step towards ending hunger in America!
+      Thank you for doing your part towards reducing food waste in America.
       </Text>
       <TextInput
       style={styles.inputBox}

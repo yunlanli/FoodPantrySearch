@@ -16,7 +16,7 @@ export default function toList(){
     querySnapshot.forEach(function(doc) {
       listOfEntries.push(doc.data());
     })
-    return listOfEntries;
+    console.log(listOfEntries);
   })
   .catch(function(error) {
     console.log("Error getting documents: ", error);

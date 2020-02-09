@@ -23,14 +23,11 @@ import LoadingScreen from './screens/LoadingScreen';
 
 
 const MainNavigator = createStackNavigator({
-<<<<<<< HEAD
-  MapScreen: {screen: MapScreen},
-  HomeScreen: { screen: HomeScreen },
-  ProfileScreen: { screen: ProfileScreen },
-=======
   LoadingScreen: { screen: LoadingScreen,
     navigationOptions: {
       header: null,
+      mode: 'modal',
+      headerMode: null
     }
   },
   HomeScreen: { screen: HomeScreen,
@@ -44,12 +41,13 @@ const MainNavigator = createStackNavigator({
       header: null,
     }
   },
->>>>>>> a76228df9f71797e71070757841005d4277fbe60
   SignIn: { screen: SignInScreen },
   SignUp: { screen: SignUpScreen },
   FormScreen: { screen: FormScreen,
     navigationOptions: {
+      headerMode: 'none',
       header: null,
+      gesturesEnabled: false,
     }
   }
 },

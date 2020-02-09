@@ -40,7 +40,7 @@ componentDidMount() {
 render() {
   return(
     <Text>
-    hi
+      Name: Hong Sen Du
     </Text>
   )}
 }

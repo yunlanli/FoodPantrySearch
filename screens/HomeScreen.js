@@ -25,7 +25,7 @@ class HomeScreen extends React.Component {
         height: 350,
         position: 'absolute',
         left: 0,
-        bottom: 350,
+        bottom: 300,
 
       }}
 
@@ -38,7 +38,7 @@ class HomeScreen extends React.Component {
         height: 500,
         position: 'absolute',
         right: -65,
-        top: 40,
+        top: 50,
 
       }}
 

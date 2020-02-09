@@ -39,48 +39,50 @@ var db = firebase.firestore();
 class FormScreen extends React.Component {
   handleSubmit = () => {
     const value = this._form.getValue(); // use that ref to get the form value
-    var id = firebase.auth().currentUser.uid;
-    var user = db.collection("Donators").doc(id);
-    var fullAddress = value.street + ", " + value.city + ", " + value.state + ", " + value.zipcode;
-    var long, lata;
-    Geocode.fromAddress(fullAddress).then(
-      response => {
-        const { lat, lng } = response.results[0].geometry.location;
-        lata = lat;
-        long = lng;
-      },
-      error => {
-        console.error(error);
-      }
-    );
-    var items = value.items.replace(/\s/g, '').split(',');
-    user.get().then((doc) => {
-      var data = doc.data();
-      db.collection("Donations").add({
-        id: id,
-        name: data.name,
-        email: data.email,
-        phoneNum: data.phoneNum,
-        addinfo: value.addinfo,
-        address: fullAddress,
-        items: items,
-        startTime: value.starttime,
-        endTime: value.endtime,
-        servings: value.servings,
-        lat: lata,
-        long: long
-      })
-      .then(() => {
-        const { navigate } = this.props.navigation;
-        navigate("ProfileScreen");
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
+    console.log(value);
+    if (value != null){
+      var id = firebase.auth().currentUser.uid;
+      var user = db.collection("Donators").doc(id);
+      var fullAddress = value.street + ", " + value.city + ", " + value.state + ", " + value.zipcode;
+      var long, lata;
+      Geocode.fromAddress(fullAddress).then(
+        response => {
+          const { lat, lng } = response.results[0].geometry.location;
+          lata = lat;
+          long = lng;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      var items = value.items.replace(/\s/g, '').split(',');
+      user.get().then((doc) => {
+        var data = doc.data();
+        db.collection("Donations").add({
+          id: id,
+          name: data.name,
+          email: data.email,
+          phoneNum: data.phoneNum,
+          addinfo: value.addinfo,
+          address: fullAddress,
+          items: items,
+          startTime: value.starttime,
+          endTime: value.endtime,
+          servings: value.servings,
+          lat: lata,
+          long: long
+        })
+        .then(() => {
+          const { navigate } = this.props.navigation;
+          navigate("MapScreen");
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+      }).catch(function(error) {
+        console.log("Error getting document:", error);
       });
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    });
-
+    }
 
   }
 

@@ -20,7 +20,7 @@ class LoadingScreen extends React.Component {
     var user = firebase.auth().currentUser;
 
     if (user) {
-      sleep(4000).then( () => {
+      sleep(8000).then( () => {
         const { navigate } = this.props.navigation;
         navigate("FormScreen")
       });
