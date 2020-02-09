@@ -12,28 +12,30 @@ import MapView from 'react-native-maps';
 import { homeStyle } from '../../GlobalStyles';
 import Donator from './Donator';
 
-export default class Map extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
+function donatorGenerator(donatorList){
+    const donatorMarker = donatorList.map(donator => {
         return(
-            <MapView style={homeStyle.pantryMap}>
-                {this.props.donatorList.map(donator => {
-                    return(
-                        <Donator
-                            key={donator.name}
-                            location={donator.coordinate}
-                            address={donator.address}
-                            donator={donator.name}
-                            items={donator.items}
-                            phone={donator.contact}
-                            addInfo={donator.addInfo}
-                        />
-                    );
-                })}
-            </MapView>
+            <Donator
+                key={donator.name}
+                location={donator.coordinate}
+                address={donator.address}
+                donator={donator.name}
+                items={donator.items}
+                phone={donator.contact}
+                addInfo={donator.addInfo}
+            />
         );
-    }
+    })
+
+    return donatorMarker;
 }
 
+const Map = props => {
+    return(
+        <MapView style={homeStyle.pantryMap}>
+            {donatorGenerator(props.donatorList)}
+        </MapView>
+    )
+}
+
+export default Map;
