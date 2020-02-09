@@ -35,6 +35,7 @@ class SignUp extends React.Component {
       })
       .then(() => {
         const { navigate } = this.props.navigation;
+        navigation.setOptions({ header: null })
         navigate("FormScreen");
       })
       .catch(function(error) {

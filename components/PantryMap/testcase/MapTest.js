@@ -72,9 +72,14 @@ const PantryList = [
     },
 ]
 
-
-export default function MapTest(){
-    return <Map 
-        donatorList = {DonatorList}
-        pantryList = {PantryList}/>
+const MapTest = (props) => {
+    const {pantry, donator} = props;
+        return (<Map 
+            showPantry = {pantry}
+            showDonator = {donator}
+            donatorList = {DonatorList}
+            pantryList = {PantryList}/>
+        );
 }
+
+export default MapTest;

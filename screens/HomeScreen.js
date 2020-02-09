@@ -4,9 +4,14 @@ import { Image } from 'react-native';
 import { Text, TouchableOpacity } from 'react-native';
 
 
+import Firebase from '../constants/ApiKeys';
+import firebase from 'firebase';
 
 class HomeScreen extends React.Component {
 
+  constructor(props){
+    super(props);
+  }
 
   render() {
     return (
@@ -20,7 +25,7 @@ class HomeScreen extends React.Component {
         height: 350,
         position: 'absolute',
         left: 0,
-        bottom: 270,
+        bottom: 300,
 
       }}
 
@@ -32,22 +37,12 @@ class HomeScreen extends React.Component {
         width: 500,
         height: 500,
         position: 'absolute',
-        right: -60,
-        top: 20,
+        right: -65,
+        top: 50,
 
       }}
 
       />
-
-      <View style={styles.buttonContainer1}>
-
-      <Text onPress={() => {
-        const { navigate } = this.props.navigation;
-        navigate('SignUp');
-      }}
-      title = "Need a Account? Sign up here."
-      />
-      </View>
 
       <View style={styles.buttonContainer2}>
       <Button
@@ -74,7 +69,15 @@ class HomeScreen extends React.Component {
       color="#000000"
 
       />
+
       </View>
+
+      <Text style={styles.account} onPress={() => {
+        const { navigate } = this.props.navigation;
+        navigate('SignUp');
+      }}
+      title = "Don't have an account? Sign in here."
+      />
 
       </View>
 
@@ -91,35 +94,28 @@ const styles = StyleSheet.create({
 
   },
 
-
-
-  buttonContainer1: {
-    margin: 20,
-    color:'black',
-    right: 3,
-    top: 300,
-    borderRadius:15,
-
-
-
-  },
-
   buttonContainer2: {
-    margin: 20,
+    margin: 30,
     backgroundColor: '#66ff99',
     right: 3,
-    top: 150,
+    top: 200,
     borderRadius:15,
   },
 
   buttonContainer3: {
-    margin: 20,
+    margin: 30,
     backgroundColor: '#cc66ff',
     // right: 3,
-    // top: 75,
+    top: 30,
     borderRadius:15,
 
   },
+  account: {
+    fontSize:14,
+    textAlign:'center',
+    top:100,
+    color:'black',
+  }
 });
 
 

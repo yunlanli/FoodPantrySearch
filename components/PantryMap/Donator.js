@@ -11,55 +11,98 @@
  * addInfo -> Additional info such as allergy
  */
 import React from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
-
+import { View } from 'react-native';
 import { Marker, Callout, CalloutSubview } from 'react-native-maps';
-import { donator } from '../../styles/Donator';
-// import Unorderedlist from 'react-native-unordered-list';
+import Unorderedlist from 'react-native-unordered-list';
+import styled from 'styled-components';
+
+const Description = styled.View`
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+`;
+
+const Name = styled.Text`
+    font-size: 20;
+    font-weight: bold;
+    text-align: center;
+`;
+
+const Heading = styled.Text`
+    font-size: 12;
+    font-weight: bold;
+    margin-left: 2;
+    margin-bottom: 4;
+`;
+
+const Content = styled.Text`
+    font-size: 10;
+    margin-left: 2;
+    margin-top: 2;
+`;
+
+const RowContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+`;
 
 function itemGenerator(list) {
     const itemComponent = list.map(item =>{
         return(
-            <Text key={item}>{item}</Text>
+            <Unorderedlist bulletUnicode={0x25E6}>
+                <Content key={item}>{item}</Content>
+            </Unorderedlist>
         );  
     });
 
     return itemComponent;
 }
 
-const Donator = props => (
-    <Marker coordinate={props.location}>
+const Donator = props => { 
+    const donatorMarker = (
+        <Marker coordinate={props.location}>
 
-        <Callout>
-            <View style={donator.Description}>
-                <Text style={donator.Name}>{props.donator}</Text>
-                
-                <CalloutSubview>
-                    <ScrollView>
-                        <Text>Available items:</Text>
-                        <ScrollView style={donator.Items}>
+            <Callout>
+                <Description>
+                    <Name>{props.donator}</Name>
+                    
+                    <CalloutSubview>
+                        {/* <ScrollView>
+                            <ScrollView style={donator.Items}>
+                                {itemGenerator(props.items)}
+                            </ScrollView>
+                        </ScrollView> */}
+                        <Heading>Available items:</Heading>
                             {itemGenerator(props.items)}
-                        </ScrollView>
-                    </ScrollView>
-                </CalloutSubview>
-                
-                <View>
-                    <Text>Pick-Up:</Text>
-                    <Text>{props.address}</Text>
+                    </CalloutSubview>
+                    
+                    <View>
+                        <RowContainer>
+                            <Heading>Pick Up: </Heading>
+                            <Content>{props.address}</Content>
+                        </RowContainer>
 
-                    <Text>Phone: {props.phone}</Text>
-                    <Text>Additional Info: {props.addInfo}</Text>
-                </View>
+                        <RowContainer>
+                            <Heading>Phone:</Heading>
+                             <Content>{props.phone}</Content>
+                        </RowContainer>
+                        
+                        <RowContainer>
+                            <Heading>Additional Info: </Heading>
+                            <Content>{props.addInfo}</Content>
+                        </RowContainer>
+                        
+                    </View>
 
-            </View>
-        </Callout>
+                </Description>
+            </Callout>
 
-    </Marker>
-    
-)
+        </Marker>
+    );
+
+    return donatorMarker;
+}
 
 export default Donator;

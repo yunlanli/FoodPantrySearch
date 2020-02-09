@@ -12,44 +12,96 @@
 // import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
-  Text,
   View,
   Linking,
 } from 'react-native';
 
 import { Marker, Callout, CalloutSubview } from 'react-native-maps';
-import { pantry } from '../../styles/Pantry';
+import styled from 'styled-components';
+import { theme } from '../../styles/GlobalStyles';
+
+const Description = styled.View`
+    width:100%;
+    display: flex;
+    flex-direction: column;
+`;
+
+const Name = styled.Text`
+    width: 100%;
+    font-size: 20;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1;
+    padding-bottom: 3;
+    /* margin-left: ; */
+    margin-bottom: 2;
+`;
+
+const WaitTime = styled.Text`
+    font-size: 14;
+    font-weight: bold;
+    color: ${theme.lightBlue};
+    margin-left: 2;
+    margin-bottom: 2;
+`;
+
+const Address = styled.Text`
+    font-size: 14;
+    font-weight: bold;
+    color: ${theme.lightPink};
+    margin-left: 2;
+    margin-bottom: 2;
+`;
+
+const AddressFull = styled.Text`
+    font-size: 13;
+    color: ${theme.black};
+    margin-left: 2;
+`;
+
+const Reserve = styled.Button`
+    width: 140;
+    font-size: 16;
+    font-weight: bold;
+`;
 
 function handleReserve(urL){
     // Linking.openURL(urL);
 }
 
-const Pantry = props => (
-    <Marker 
-        coordinate={props.location}
-        pinColor='orange'>
+const Pantry = props => {
+    const pantryMarker = (
+        <Marker 
+            coordinate={props.location}
+            pinColor='orange'>
 
-        <Callout>
-            <View style={pantry.description}>
-                <Text style={pantry.name}>{props.name}</Text>
-                
-                <Text style={pantry.waitTime}>
-                    Wait time: {props.waitTime} 
-                </Text>
+            <Callout>
+                <Description>
+                    <Name>{props.name}</Name>
+                    
+                    <WaitTime>
+                        Wait time:   {props.waitTime} 
+                    </WaitTime>
 
-                <View>
-                    <Text style={pantry.address}>Address:</Text>
-                    <Text>{props.address}</Text>
-                </View>
-                
-                <CalloutSubview onPress={handleReserve(props.urL)}>
-                    <Text style={pantry.reserve}> Reserve Here </Text>
-                </CalloutSubview>
-            </View>
-        </Callout>
+                    <View>
+                        <Address>Address:</Address>
+                        <AddressFull>{props.address}</AddressFull>
+                    </View>
+                    
+                    <CalloutSubview>
+                        <Reserve
+                            title='Reserve Here'
+                            color={theme.grey}
+                            onPress={handleReserve(props.urL)}/>
+                    </CalloutSubview>
+                </Description>
+            </Callout>
 
-    </Marker>
-    
-)
+        </Marker>
+    );
+
+    return pantryMarker;
+
+}
 
 export default Pantry;
