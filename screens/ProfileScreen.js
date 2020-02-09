@@ -39,8 +39,11 @@ componentDidMount() {
 }
 
 render() {
-
-  }
+  return(
+    <Text>
+    hi
+    </Text>
+  )}
 }
 
 export default ProfileScreen

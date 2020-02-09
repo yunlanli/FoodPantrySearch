@@ -18,7 +18,7 @@ class SignIn extends React.Component {
     password: '',
   }
   handleSignIn = () => {
-    const { email, password, phoneNum} = this.state
+    const { email, password} = this.state
     Firebase.auth().signInWithEmailAndPassword(email, password)
     .then(() => {
       const { navigate } = this.props.navigation;
@@ -57,13 +57,7 @@ class SignIn extends React.Component {
       placeholder='Password'
       secureTextEntry={true}
       />
-      <TextInput
-      style={styles.inputBox}
-      value={this.state.phoneNum}
-      onChangeText={phoneNum => this.setState({ phoneNum })}
-      placeholder='Phone Number'
-      autoCapitalize='none'
-      />
+
       <TouchableOpacity style={styles.button} onPress={this.handleSignIn}>
       <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>

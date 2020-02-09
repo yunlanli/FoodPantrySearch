@@ -28,10 +28,46 @@ const Listing = t.struct({
   endtime: t.Date
 });
 
+import Firebase from '../constants/ApiKeys';
+import firebase from 'firebase';
+require("firebase/firestore");
+var db = firebase.firestore();
+
 class FormScreen extends React.Component {
   handleSubmit = () => {
       const value = this._form.getValue(); // use that ref to get the form value
       console.log('value: ', value);
+      var id = firebase.auth().currentUser.uid;
+      var user = db.collection("Donators").doc(id);
+      var fullAddress = value.street + ", " + value.city + ", " + value.state + ", " + value.zipcode;
+      var items = value.items.replace(/\s/g, '').split(',');
+      user.get().then((doc) => {
+        var data = doc.data();
+        db.collection("Donations").doc(id).set({
+          id: id,
+          name: data.name,
+          email: data.email,
+          phoneNum: data.phoneNum,
+          addinfo: value.addinfo,
+          address: fullAddress,
+          items: items,
+          startTime: value.starttime,
+          endTime: value.endtime,
+          servings: value.servings,
+          addInfo: value.addinfo
+        })
+        .then(() => {
+          const { navigate } = this.props.navigation;
+          navigate("ProfileScreen");
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+      }).catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+
+
     }
 
   render() {
