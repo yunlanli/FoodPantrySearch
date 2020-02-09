@@ -9,7 +9,8 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import MapView from 'react-native-maps';
-import { homeStyle } from '../../GlobalStyles';
+import { userMap } from '../../styles/Map';
+import Pantry from './Pantry';
 import Donator from './Donator';
 
 function donatorGenerator(donatorList){
@@ -30,10 +31,40 @@ function donatorGenerator(donatorList){
     return donatorMarker;
 }
 
+function pantryGenerator(pantryList){
+    const pantryMarker = pantryList.map(pantry => {
+        return(
+            <Pantry
+                key={pantry.name}
+                location={pantry.coordinate}
+                name={pantry.name}
+                address={pantry.address}
+                waitTime={pantry.waitTime}
+                urL={pantry.urL}
+            />
+        );
+    })
+
+    return pantryMarker;
+}
+
+const NY = {
+    latitude: 40.72285,
+    longitude: -74,
+    latitudeDelta: 0.18,
+    longitudeDelta: 0.03,
+}
+
 const Map = props => {
     return(
-        <MapView style={homeStyle.pantryMap}>
+        <MapView 
+            style={userMap.mapContainer}
+            initialRegion={NY}
+            showsUserLocation={true}
+            followsUserLocation={false}
+            userLocationAnnotationTitle="You are here!">
             {donatorGenerator(props.donatorList)}
+            {pantryGenerator(props.pantryList)}
         </MapView>
     )
 }

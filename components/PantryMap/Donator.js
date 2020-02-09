@@ -18,13 +18,13 @@ import {
 } from 'react-native';
 
 import { Marker, Callout, CalloutSubview } from 'react-native-maps';
-import { homeStyle } from '../../GlobalStyles';
+import { donator } from '../../styles/Donator';
 // import Unorderedlist from 'react-native-unordered-list';
 
 function itemGenerator(list) {
     const itemComponent = list.map(item =>{
         return(
-            <Text>{item}</Text>
+            <Text key={item}>{item}</Text>
         );  
     });
 
@@ -35,13 +35,13 @@ const Donator = props => (
     <Marker coordinate={props.location}>
 
         <Callout>
-            <View style={homeStyle.donatorDescription}>
-                <Text style={homeStyle.donatorName}>{props.donator}</Text>
+            <View style={donator.Description}>
+                <Text style={donator.Name}>{props.donator}</Text>
                 
                 <CalloutSubview>
                     <ScrollView>
                         <Text>Available items:</Text>
-                        <ScrollView style={homeStyle.donatorItems}>
+                        <ScrollView style={donator.Items}>
                             {itemGenerator(props.items)}
                         </ScrollView>
                     </ScrollView>

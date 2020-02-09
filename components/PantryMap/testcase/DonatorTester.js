@@ -1,4 +1,4 @@
-import Donator from './Donator';
+import Donator from '../Donator';
 import React from 'react';
 
 const p1 = {

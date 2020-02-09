@@ -9,8 +9,11 @@ import {
 } from 'react-native';
 
 import MapView from 'react-native-maps';
-import { homeStyle } from './GlobalStyles';
+import { homeStyle } from '../styles/GlobalStyles';
 import { MonoText } from '../components/StyledText';
+import DonatorTester from '../components/PantryMap/testcase/DonatorTester';
+import MapTest from '../components/PantryMap/testcase/MapTest';
+import PantryTester from '../components/PantryMap/testcase/PantryTester';
 
 export default class HomeScreen extends React.Component {
   constructor(props){
@@ -20,7 +23,11 @@ export default class HomeScreen extends React.Component {
   render(){
     return (
       <View style={homeStyle.container}>
-        <MapView style={homeStyle.pantryMap} />
+        <MapTest/>
+        {/* <MapView style={homeStyle.pantryMap}>
+          <PantryTester/>
+          <DonatorTester/>
+        </MapView> */}
         <ScrollView
           style={homeStyle.container}
           contentContainerStyle={homeStyle.contentContainer}>
